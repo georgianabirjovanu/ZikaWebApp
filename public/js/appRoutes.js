@@ -9,6 +9,16 @@
             controller: 'MainController'
         })
 
+        .when('/register', {
+            templateUrl: 'views/register.html',
+            controller: 'RegisterController'
+        })
+
+        .when('/dashboard', {
+            templateUrl: 'views/dashboard.html',
+            controller: 'DashboardController'
+        })
+
         // nerds page that will use the NerdController
         .when('/nerds', {
             templateUrl: 'views/nerd.html',
