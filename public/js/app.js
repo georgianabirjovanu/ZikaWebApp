@@ -1,1 +1,1 @@
-angular.module('zikaApp', ['ngRoute', 'appRoutes']);
+angular.module('zikaApp', ['ngRoute', 'appRoutes', 'ngMaterial', 'ngMessages']);

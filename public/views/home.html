@@ -1,17 +1,23 @@
 <div ng-controller="AuthController">
-  aaaaa: {{teste}}
 <center>
   <h1>ZIKA</h1>
-  <form class="w-50 p-3">
-    <div class="form-group">
-      <input type="text" class="form-control" id="username" placeholder="Username" ng-model="user.email">
+  <div class="w-50 p-3">
+    <div layout-gt-sm="row">
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Email</label>
+        <input ng-model="user.email">
+      </md-input-container>
+
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Senha</label>
+        <input type="password" ng-model="user.password">
+      </md-input-container>
     </div>
-    <div class="form-group">
-      <input type="password" class="form-control" id="password" placeholder="Password" ng-model="user.password">
+
+    <div>
+      <md-button type="submit" ng-click="sign_in()">Entrar</md-button>
+      <md-button type="submit" ng-click="goToRegister()">Registrar</md-button>
     </div>
-    <button type="submit" class="btn btn-primary" ng-click="sign_in()">Login</button>
-    <hr>
-    <button type="submit" class="btn btn-primary" ng-click="goToRegister()">Register</button>
-  </form>
+  </div>
 </center>
 </div>

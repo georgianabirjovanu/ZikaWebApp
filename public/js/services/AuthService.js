@@ -6,7 +6,7 @@ zika.service('AuthService', ['$q', '$http', function ($q, $http) {
 
     // return available functions for use in the controllers
     return ({
-        register: register,
+        sign_up: sign_up,
         sign_in: sign_in,
         getStatus: getStatus,
         getUser: getUser,
@@ -15,12 +15,10 @@ zika.service('AuthService', ['$q', '$http', function ($q, $http) {
         deleteUser: deleteUser
     });
 
-    function register(user) {
-        // create a new instance of deferred
+    function sign_up(user) {
         var deferred = $q.defer();
-
         if (user.password === user.conf_pass) {
-            $http.post('/api/user/', user)
+            $http.post('https://zikaapp.herokuapp.com/auth/register', user)
                 .then(function (data) {
                     if (data.status === 200) {
                         deferred.resolve();

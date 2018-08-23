@@ -11,7 +11,7 @@
 
         .when('/register', {
             templateUrl: 'views/register.html',
-            controller: 'RegisterController'
+            controller: 'AuthController'
         })
 
         .when('/dashboard', {

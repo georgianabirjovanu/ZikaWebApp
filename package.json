@@ -2,6 +2,7 @@
   "name": "zika-web-app",
   "main": "server.js",
   "dependencies": {
+    "angular-material": "^1.1.10",
     "body-parser": "~1.4.2",
     "bootstrap": "^4.1.3",
     "express": "~4.5.1",
