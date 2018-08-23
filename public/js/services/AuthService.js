@@ -21,7 +21,7 @@ zika.service('AuthService', ['$q', '$http', function ($q, $http) {
             $http.post('https://zikaapp.herokuapp.com/auth/register', user)
                 .then(function (data) {
                     if (data.status === 200) {
-                        deferred.resolve();
+                        deferred.resolve(data);
                     } else {
                         deferred.reject();
                     }
@@ -42,9 +42,8 @@ zika.service('AuthService', ['$q', '$http', function ($q, $http) {
 
         $http.post('https://zikaapp.herokuapp.com/auth/sign_in', user)
             .then(function (data) {
-              console.log(data);
                 if (data.status === 200) {
-                    deferred.resolve();
+                    deferred.resolve(data);
                 } else {
                     deferred.reject();
                 }
