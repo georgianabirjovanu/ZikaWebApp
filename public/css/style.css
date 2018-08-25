@@ -1,0 +1,12 @@
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+.md-toolbar-tools{
+  color: white;
+}
+
+h1 {
+  font-size: 1.5em !important;
+  font-weight: bold !important;
+}

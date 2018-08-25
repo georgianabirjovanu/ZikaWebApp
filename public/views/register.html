@@ -1,29 +1,41 @@
 <div ng-controller="AuthController">
-<center>
-  <h1>ZIKA</h1>
-</center>
+  <center>
+    <h1>ZIKA</h1>
+    <div class="w-50 p-3">
+      <div layout-gt-sm="column">
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Nome</label>
+            <input ng-model="user.fullName">
+          </md-input-container>
 
-<form>
-  <div class="form-group">
-    <label for="name">Name</label>
-    <input type="text" class="form-control" id="name" placeholder="Name" ng-model="user.fullName">
-  </div>
-  <div class="form-group">
-    <label for="username">Username</label>
-    <input type="text" class="form-control" id="username" placeholder="Username">
-  </div>
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email" ng-model="user.email">
-  </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" class="form-control" id="epassword" placeholder="Password" ng-model="user.password">
-  </div>
-  <div class="form-group">
-    <label for="password">Confirm Password</label>
-    <input type="password" class="form-control" id="conf_password" placeholder="Password" ng-model="user.conf_pass">
-  </div>
-  <button type="submit" class="btn btn-primary" ng-click="sign_up()">Register</button>
-</form>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Username</label>
+            <input ng-model="user.username">
+          </md-input-container>
+        </div>
+
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Email</label>
+          <input ng-model="user.email">
+        </md-input-container>
+
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Senha</label>
+            <input type="password" ng-model="user.password">
+          </md-input-container>
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Confirme a senha</label>
+            <input type="password" ng-model="user.password">
+          </md-input-container>
+        </div>
+      </div>
+
+      <div>
+        <md-button type="submit" ng-click="goToRegister()">Registrar</md-button>
+      </div>
+    </div>
+  </center>
 </div>
