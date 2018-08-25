@@ -1,28 +1,46 @@
 <div ng-controller="PropertyController">
-<center>
-  <h2>Adicionar Propriedade</h2>
-  <div class="w-50 p-3">
-    <div layout-gt-sm="column">
-      <md-input-container class="md-block" flex-gt-sm>
-        <label>Endereço</label>
-        <input ng-model="property.address">
-      </md-input-container>
-
-      <div layout-gt-sm="row">
-        <md-input-container class="md-block" flex-gt-sm>
-          <label>Latitude</label>
-          <input ng-model="property.latitude">
-        </md-input-container>
-
-        <md-input-container class="md-block" flex-gt-sm>
-          <label>Longitude</label>
-          <input ng-model="property.longitude">
-        </md-input-container>
-      </div>
-
-    <div>
-      <md-button type="submit" ng-click="addProperty()">Adicionar</md-button>
+  <center>
+    <h1>Propriedades</h1>
+  </center>
+  <div layout="row">
+    <div flex>
+      <md-list flex>
+        <md-list-item ng-click="null">
+          <div class="md-list-item-text" layout="column">
+            <h4>Address</h4>
+          </div>
+        </md-list-item>
+        <md-list-item ng-click="null">
+          <div class="md-list-item-text" layout="column">
+            <h4>Address</h4>
+          </div>
+        </md-list-item>
+        <md-list-item ng-click="null">
+          <div class="md-list-item-text" layout="column">
+            <h4>Endereço</h4>
+          </div>
+        </md-list-item>
+      </md-list>
+    </div>
+    <div flex>
+      <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-subhead">Endereço: </span>
+            <span class="md-subhead">Latitude: </span>
+            <span class="md-subhead">Longitude: </span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-lg card-media"></div>
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button class="md-fab md-primary" aria-label="Profile">
+            <md-icon md-svg-icon="social:people"  style="color: #00F;" class="s48" aria-label="People Icon"></md-icon>
+          </md-button>
+          <md-button>Edit</md-button>
+        </md-card-actions>
+      </md-card>
     </div>
   </div>
-</center>
 </div>
