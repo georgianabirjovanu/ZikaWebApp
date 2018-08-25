@@ -1,23 +1,33 @@
 <div ng-controller="PropertyController">
-  <center>
-    <h1>Propriedades</h1>
-  </center>
+  <div layout="row" layout-align="center center">
+    <div flex="80">
+      <h1 class="properties-title">Propriedades</h1>
+    </div>
+    <div flex="20">
+      <md-button class="md-fab md-primary md-mini" ng-click="showAdvanced($event)">
+        <i class="button-fab-icon material-icons">add</i>
+      </md-button>
+      <md-button class="md-fab md-primary md-mini">
+        <i class="button-fab-icon material-icons">search</i>
+      </md-button>
+    </div>
+  </div>
   <div layout="row">
     <div flex>
       <md-list flex>
         <md-list-item ng-click="null">
           <div class="md-list-item-text" layout="column">
-            <h4>Address</h4>
+            <h5>Endereço 1</h5>
           </div>
         </md-list-item>
         <md-list-item ng-click="null">
           <div class="md-list-item-text" layout="column">
-            <h4>Address</h4>
+            <h5>Endereço 2</h5>
           </div>
         </md-list-item>
         <md-list-item ng-click="null">
           <div class="md-list-item-text" layout="column">
-            <h4>Endereço</h4>
+            <h5>Endereço 3</h5>
           </div>
         </md-list-item>
       </md-list>
@@ -31,14 +41,19 @@
             <span class="md-subhead">Longitude: </span>
           </md-card-title-text>
           <md-card-title-media>
-            <div class="md-media-lg card-media"></div>
+            <div class="md-media-lg card-media">
+              <img ng-src="img/casa.jpg" class="md-card-image" alt="Washed Out">
+            </div>
           </md-card-title-media>
         </md-card-title>
         <md-card-actions layout="row" layout-align="end center">
-          <md-button class="md-fab md-primary" aria-label="Profile">
-            <md-icon md-svg-icon="social:people"  style="color: #00F;" class="s48" aria-label="People Icon"></md-icon>
+          <md-button class="md-fab md-primary md-mini" aria-label="Profile">
+            <i class="button-fab-icon material-icons">person</i>
           </md-button>
-          <md-button>Edit</md-button>
+          <md-button class="md-fab md-primary md-mini" aria-label="Profile">
+            <i class="button-fab-icon material-icons">person</i>
+          </md-button>
+          <md-button>Editar</md-button>
         </md-card-actions>
       </md-card>
     </div>

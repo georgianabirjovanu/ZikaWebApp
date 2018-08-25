@@ -10,3 +10,12 @@ h1 {
   font-size: 1.5em !important;
   font-weight: bold !important;
 }
+
+.button-fab-icon {
+  padding-top:6px;
+}
+
+.properties-title {
+  text-align: center;
+  padding-left: 200px;
+}
