@@ -4,8 +4,8 @@ angular.module('zikaApp').controller('AuthController', ['$scope', '$rootScope', 
 
     $scope.sign_in = function(){
       AuthService.sign_in($scope.user).then(function(data){
-        $cookies.put('user', data.data);
-        $rootScope.user = data.data;
+        $cookies.putObject('user', data.data);
+        $rootScope.user_info = data.data;
         $location.path('/dashboard');
       })
     }
@@ -15,13 +15,10 @@ angular.module('zikaApp').controller('AuthController', ['$scope', '$rootScope', 
     }
 
     $scope.sign_up = function(){
-      console.log("a")
-      console.log($scope.user)
       AuthService.sign_up($scope.user)
     }
 
     $scope.goToRegister = function() {
-      console.log("aqui")
        $location.path('/register');
     }
 
