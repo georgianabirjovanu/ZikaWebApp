@@ -16,7 +16,7 @@ angular.module('zikaApp').controller('PropertyController', ['$scope', '$rootScop
         latitude: answer[1],
         longitude: answer[2]
       }
-      ActivityService.addActivity(activity, $rootScope.user_info);
+      ActivityService.addActivity(activity, $rootScope.user_info.token);
     }, function() {
       $scope.status = 'You cancelled the dialog.';
     });

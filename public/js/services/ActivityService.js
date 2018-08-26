@@ -13,11 +13,12 @@ zika.service('ActivityService', ['$q', '$http', function ($q, $http) {
 
     function addActivity(activity, token) {
       console.log(activity, token)
+      activity = {activity: activity}
         var deferred = $q.defer();
         var req = {
           method: 'POST',
           url: 'https://zikaapp.herokuapp.com/addActivity',
-          headers: { 'Authorization': 'Bearer {{token}}' , 'Content-Type': 'application/json'},
+          headers: { 'Authorization': "Bearer " + token , 'Content-Type': 'application/json'},
           data: activity
         }
         $http(req)

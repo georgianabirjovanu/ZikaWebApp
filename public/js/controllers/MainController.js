@@ -20,8 +20,6 @@ angular.module('zikaApp').controller('MainController', ['$scope','$location','$m
     $rootScope.user_info = $cookies.getObject('user');
   }
 
-  console.log($rootScope.user_info)
-
 
   $scope.taglinee = 'Nothing beats a pocket protector!';
   $scope.toggleLeft = buildToggler('left');
