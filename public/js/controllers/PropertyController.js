@@ -1,10 +1,10 @@
-angular.module('zikaApp').controller('PropertyController', ['$scope', '$location', 'PropertyService', function($scope, $location, PropertyService) {
+angular.module('zikaApp').controller('PropertyController', ['$scope', '$location', 'PropertyService', '$mdDialog', function($scope, $location, PropertyService, $mdDialog) {
     $scope.property = {}
 
     $scope.showAdvanced = function(ev) {
     $mdDialog.show({
       controller: DialogController,
-      templateUrl: 'dialog1.tmpl.html',
+      templateUrl: 'views/dialog1.tmpl.html',
       parent: angular.element(document.body),
       targetEvent: ev,
       clickOutsideToClose:true,
