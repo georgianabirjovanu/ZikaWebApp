@@ -12,7 +12,6 @@ zika.service('ActivityService', ['$q', '$http', function ($q, $http) {
     });
 
     function addActivity(activity, token) {
-      console.log(activity, token)
       activity = {activity: activity}
         var deferred = $q.defer();
         var req = {
