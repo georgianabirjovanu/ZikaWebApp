@@ -1,7 +1,7 @@
 <div ng-controller="AuthController">
   <center>
-    <h1>ZIKA</h1>
-    <div class="w-50 p-3">
+    <div class="w-50 p-3 white-component">
+      <h4 class="component-title"> Registro </h4>
       <div layout-gt-sm="column">
         <div layout-gt-sm="row">
           <md-input-container class="md-block" flex-gt-sm>
@@ -25,7 +25,8 @@
             <label>Senha</label>
             <input type="password" ng-model="user.password">
           </md-input-container>
-
+        </div>
+        <div layout-gt-sm="row">
           <md-input-container class="md-block" flex-gt-sm>
             <label>Confirme a senha</label>
             <input type="password" ng-model="user.password">
@@ -34,7 +35,8 @@
       </div>
 
       <div>
-        <md-button type="submit" ng-click="goToRegister()">Registrar</md-button>
+        <md-button href="/">Voltar</md-button>
+        <md-button type="submit" class="md-raised md-primary" ng-click="sign_up()">Registrar</md-button>
       </div>
     </div>
   </center>

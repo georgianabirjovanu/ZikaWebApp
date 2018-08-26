@@ -1,4 +1,6 @@
 angular.module('zikaApp').controller('DashboardController', ['$scope','$rootScope', function($scope, $rootScope, $mdSidenav) {
+
+  // FOR NOW, THE INFOS ARE MOCKED
   $scope.circle_progress = {}
   $scope.circle_progress.labels = ["Finalizadas", "Restante", "Fechadas"];
   $scope.circle_progress.data = [300, 500, 100];
@@ -32,5 +34,34 @@ angular.module('zikaApp').controller('DashboardController', ['$scope','$rootScop
         $mdSidenav(componentId).toggle();
       };
     }
+
+    $scope.people = [
+      {
+        name: 'Joao',
+        img: 'https://d3ujk8tqtsey8o.cloudfront.net/imagens_face/small_shutterstock_140713168.jpg',
+        selected: false
+      },
+      {
+        name: 'Maria',
+        img: 'https://d3ujk8tqtsey8o.cloudfront.net/imagens_face/small_shutterstock_140713168.jpg',
+        selected: true
+      },
+      {
+        name: 'Klebia',
+        img: 'https://d3ujk8tqtsey8o.cloudfront.net/imagens_face/small_shutterstock_140713168.jpg',
+        selected: false
+      },
+      {
+        name: 'Veruska',
+        img: 'https://d3ujk8tqtsey8o.cloudfront.net/imagens_face/small_shutterstock_140713168.jpg',
+        selected: false
+      },
+      {
+        name: 'Josefa',
+        img: 'https://d3ujk8tqtsey8o.cloudfront.net/imagens_face/small_shutterstock_140713168.jpg',
+        selected: false
+      }
+    ]
+
 
 }]);

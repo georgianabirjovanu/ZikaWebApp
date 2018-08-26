@@ -7,6 +7,9 @@ angular.module('zikaApp').controller('AuthController', ['$scope', '$rootScope', 
         $cookies.putObject('user', data.data);
         $rootScope.user_info = data.data;
         $location.path('/dashboard');
+      }).catch(function(data){
+        $scope.couldNotLoginToast();
+
       })
     }
 
