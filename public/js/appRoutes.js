@@ -17,6 +17,11 @@
         .when('/dashboard', {
             templateUrl: 'views/dashboard.html',
             controller: 'DashboardController'
+        })
+
+        .when('/properties', {
+            templateUrl: 'views/properties.html',
+            controller: 'PropertyController'
         });
 
     $locationProvider.html5Mode(true);

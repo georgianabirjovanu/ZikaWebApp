@@ -1,0 +1,61 @@
+<div ng-controller="PropertyController">
+  <div layout="row" layout-align="center center">
+    <div flex="80">
+      <h1 class="properties-title">Propriedades</h1>
+    </div>
+    <div flex="20">
+      <md-button class="md-fab md-primary md-mini" ng-click="showAdvanced($event)">
+        <i class="button-fab-icon material-icons">add</i>
+      </md-button>
+      <md-button class="md-fab md-primary md-mini">
+        <i class="button-fab-icon material-icons">search</i>
+      </md-button>
+    </div>
+  </div>
+  <div layout="row">
+    <div flex>
+      <md-list flex>
+        <md-list-item ng-click="null">
+          <div class="md-list-item-text" layout="column">
+            <h5>Endereço 1</h5>
+          </div>
+        </md-list-item>
+        <md-list-item ng-click="null">
+          <div class="md-list-item-text" layout="column">
+            <h5>Endereço 2</h5>
+          </div>
+        </md-list-item>
+        <md-list-item ng-click="null">
+          <div class="md-list-item-text" layout="column">
+            <h5>Endereço 3</h5>
+          </div>
+        </md-list-item>
+      </md-list>
+    </div>
+    <div flex>
+      <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-subhead">Endereço: </span>
+            <span class="md-subhead">Latitude: </span>
+            <span class="md-subhead">Longitude: </span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-lg card-media">
+              <img ng-src="img/casa.jpg" class="md-card-image" alt="Washed Out">
+            </div>
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button class="md-fab md-primary md-mini" aria-label="Profile">
+            <i class="button-fab-icon material-icons">person</i>
+          </md-button>
+          <md-button class="md-fab md-primary md-mini" aria-label="Profile">
+            <i class="button-fab-icon material-icons">person</i>
+          </md-button>
+          <md-button>Editar</md-button>
+        </md-card-actions>
+      </md-card>
+    </div>
+  </div>
+</div>

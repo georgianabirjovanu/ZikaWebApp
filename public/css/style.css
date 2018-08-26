@@ -11,6 +11,14 @@ h1 {
   font-weight: bold !important;
 }
 
+.button-fab-icon {
+  padding-top:6px;
+}
+
+.properties-title {
+  text-align: center;
+  padding-left: 200px;
+}
 .widget-title {
   display: block;
   color: rgb(175, 173, 173);
