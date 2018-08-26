@@ -31,7 +31,7 @@ h1 {
   border: 1px solid rgb(226, 226, 226);
   border-radius: 4px;
   padding: 20px 20px;
-
+  width: 98%;
 }
 
 .module-title {
@@ -39,4 +39,29 @@ h1 {
   font-weight: bold;
   margin-bottom: -20px;
   color: rgb(99, 106, 109);
+}
+
+.toolbar-center {
+  width: 100%;
+  display: flex;
+}
+
+h5 {
+  font-size: 1.0rem;
+  color: #575859;
+}
+
+body {
+  background-color: rgb(250,250,250);
+}
+
+.white-component {
+  background: white;
+  padding: 60px 40px !important;
+  border-radius: 5px;
+  padding-top: 30px !important;
+}
+
+.component-title {
+  padding-bottom: 30px;
 }

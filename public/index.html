@@ -49,36 +49,53 @@
 
 </head>
 <body ng-app="zikaApp" ng-controller="MainController">
-<div   class="container">
-  <md-toolbar md-scroll-shrink ng-if="true" >
-   <div class="md-toolbar-tools">
-     <md-button class="md-icon-button" aria-label="Settings" ng-click="toggleLeft()" ng-show="isLogged()">
+  <md-toolbar md-scroll-shrink ng-if="true" layout-align="center center">
+   <div class="md-toolbar-tools" >
+     <md-button class="md-icon-button" aria-label="Settings" ng-click="toggleLeft()" ng-if="isLogged()">
        <i class="material-icons">menu</i>
 
         </md-button>
-     <h1>ZIKA</h1>
-   </div>
+    <div class= "toolbar-center" layout-align="center center">
+     <a href="/" ><h1>ZIKA</h1></a>
+       <md-button class="md-icon-button" ng-click="gotoDashboard()" layout-align="center center" class="md-accent" ng-if="isLogged()">
+        <i class="material-icons" layout-align="center center">home</i>
+      </md-button>
+    </div>
+  </div>
  </md-toolbar>
   <section layout="row" flex>
 
      <md-sidenav class="md-sidenav-left" md-component-id="left"
-                 md-disable-backdrop md-whiteframe="4">
+                 md-disable-backdrop md-whiteframe="4"  ng-if="isLogged()">
 
        <md-toolbar class="md-theme-indigo">
-         <h1 class="md-toolbar-tools">Disabled Backdrop</h1>
+         <div class="md-toolbar-tools">
+         <md-button class="md-icon-button" aria-label="Settings" ng-click="toggleLeft()" ng-if="isLogged()">
+           <i class="material-icons">close</i>
+            </md-button>
+          </div>
        </md-toolbar>
 
        <md-content layout-margin>
-         <p>
-           This sidenav is not showing any backdrop, where users can click on it, to close the sidenav.
-         </p>
-         <md-button ng-click="toggleLeft()" class="md-accent">
-           Close this Sidenav
-         </md-button>
 
-         <md-button ng-click="sign_off()" class="md-accent">
-           Sair
-         </md-button>
+         <md-list flex>
+        <md-subheader class="md-no-sticky">Você está acessando o sistema como: <b>Maria Couto</b></md-subheader>
+          <md-list-item class="md-1-line" ng-click="gotoDashboard()" ng-click="null">
+            <div class="md-list-item-text" layout="column">
+              <h5>Dashboard</h5>
+            </div>
+          </md-list-item>
+          <md-list-item class="md-1-line" ng-click="gotoProperties()" ng-click="null">
+            <div class="md-list-item-text" layout="column">
+              <h5>Propriedades</h5>
+            </div>
+          </md-list-item>
+          <md-list-item class="md-1-line" ng-click="sign_off()" ng-click="null">
+            <div class="md-list-item-text" layout="column">
+              <h5>Sair</h5>
+            </div>
+          </md-list-item>
+        </md-list>
        </md-content>
 
      </md-sidenav>
@@ -93,6 +110,5 @@
 
 
 
-</div>
 </body>
 </html>

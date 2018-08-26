@@ -1,96 +1,78 @@
+<div   class="container">
 
-<div class="container">
+<h3 class="module-title">Painel de Controle</h3>
 
-  <h3 class="module-title">Painel de Controle</h3>
+<md-grid-list
+      md-cols="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="6"
+      md-row-height-gt-md="1:1" md-row-height="4:3"
+      md-gutter="8px" md-gutter-gt-sm="4px" >
 
-  <md-grid-list
-        md-cols="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="6"
-        md-row-height-gt-md="1:1" md-row-height="4:3"
-        md-gutter="8px" md-gutter-gt-sm="4px" >
-
-    <md-grid-tile
-                  md-rowspan="2"
-                  md-colspan="2"
-                  md-colspan-sm="1"
-                  md-colspan-xs="1">
-                  <div class="widget">
-                  <div>  <h4 class="widget-title"> Visão geral </h4>  </div>
-                  <canvas id="doughnut" class="chart chart-doughnut"chart-data="circle_progress.data" chart-labels="circle_progress.labels"></canvas>
-              </div>
-
-
-    </md-grid-tile>
-    <md-grid-tile
-                  md-rowspan="2"
-                  md-colspan="2"
-                  md-colspan-sm="1"
-                  md-colspan-xs="1">
-                  <div class="widget">
-                    <div><h4 class="widget-title"> Por Dia da Semana </h4> </div>
-                    <canvas id="line" class="chart chart-line" chart-data="progresso_comparativo.data" chart-labels="progresso_comparativo.labels" chart-series="progresso_comparativo.series"  chart-click="onClick"> </canvas>
-              </div>
-
-    </md-grid-tile>
-
-    <md-grid-tile
-                  md-rowspan="2"
-                  md-colspan="2"
-                  md-colspan-sm="1"
-                  md-colspan-xs="1">
-                  <div class="widget">
-                    <div><h4 class="widget-title"> Por Membro </h4> </div>
-                      <canvas id="base" class="chart-horizontal-bar" chart-data="progresso_individual_comparativo.data" chart-labels="progresso_individual_comparativo.labels" ></canvas>              </div>
-
-    </md-grid-tile>
-  </md-grid-list>
-
-
-
-
-  <div class="row">
-    <div class="col-sm">
-      <center>
-          <h3>Agents</h3>
-          <div id="accordion">
-            <div class="card">
-              <div class="card-header" id="headingOne">
-                <h5 class="mb-0">
-                  <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    Agent name
-                  </button>
-                </h5>
-              </div>
-
-              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                <div class="card-body">
-                  Properties assigned
-                </div>
-              </div>
-            </div>
-          </div>
-      </center>
-    </div>
-    <div class="col-sm">
-      <center>
-        <h3>Properties</h3>
-        <div id="accordion-2">
-          <div class="card">
-            <div class="card-header" id="headingTwo">
-              <h5 class="mb-0">
-                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseTwo">
-                  Address
-                </button>
-              </h5>
+  <md-grid-tile
+                md-rowspan="2"
+                md-colspan="2"
+                md-colspan-sm="1"
+                md-colspan-xs="1">
+                <div class="widget">
+                <div>  <h4 class="widget-title"> Visão geral </h4>  </div>
+                <canvas id="doughnut" class="chart chart-doughnut"chart-data="circle_progress.data" chart-labels="circle_progress.labels"></canvas>
             </div>
 
-            <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion-2">
-              <div class="card-body">
-                Agents/visits
-              </div>
+
+  </md-grid-tile>
+  <md-grid-tile
+                md-rowspan="2"
+                md-colspan="2"
+                md-colspan-sm="1"
+                md-colspan-xs="1">
+                <div class="widget">
+                  <div><h4 class="widget-title"> Por Dia da Semana </h4> </div>
+                  <canvas id="line" class="chart chart-line" chart-data="progresso_comparativo.data" chart-labels="progresso_comparativo.labels" chart-series="progresso_comparativo.series"  chart-click="onClick"> </canvas>
             </div>
-          </div>
-        </div>
-      </center>
-    </div>
-  </div>
+
+  </md-grid-tile>
+
+  <md-grid-tile
+                md-rowspan="2"
+                md-colspan="2"
+                md-colspan-sm="1"
+                md-colspan-xs="1">
+                <div class="widget">
+                  <div><h4 class="widget-title"> Por Agente </h4> </div>
+                    <canvas id="base" class="chart-horizontal-bar" chart-data="progresso_individual_comparativo.data" chart-labels="progresso_individual_comparativo.labels" ></canvas>              </div>
+
+  </md-grid-tile>
+
+  <md-grid-tile
+                md-rowspan="2"
+                md-colspan="2"
+                md-colspan-sm="1"
+                md-colspan-xs="1">
+                <div class="widget">
+                  <div><h4 class="widget-title"> Agentes </h4> </div>
+                  <md-list>
+                    <md-list-item ng-repeat="person in people" ng-click="goToPerson(person.name, $event)" class="noright">
+                      <img alt="{{ person.name }}" ng-src="{{ person.img }}" class="md-avatar" />
+                      <p> {{person.name}}</p>
+                      <md-checkbox class="md-secondary" ng-model="person.selected"></md-checkbox>
+                      <md-icon  ng-click="doSecondaryAction($event)" aria-label="Send Email" class="md-secondary md-hue-3" >  <i class="material-icons" layout-align="center center">add_location</i></md-icon>
+                      <md-icon class="md-secondary" ng-click="doSecondaryAction($event)" aria-label="Chat"> <i class="material-icons" layout-align="center center">timeline</i></md-icon>
+                    </md-list-item>
+                  </md-list>
+                  </div>
+
+  </md-grid-tile>
+  <md-grid-tile
+                md-rowspan="1"
+                md-colspan="2"
+                md-colspan-sm="1"
+                md-colspan-xs="1">
+                <div class="widget">
+                  <div><h4 class="widget-title"> Propriedades </h4> </div>
+                    <b> Visita Mais Recente <br/> </b> Balaco Baco, 24. <br/>
+                    <b> Visita Mais Antiga <br/> </b> Rio da Porta, 36.
+                  </div>
+
+  </md-grid-tile>
+</md-grid-list>
+
 </div>
