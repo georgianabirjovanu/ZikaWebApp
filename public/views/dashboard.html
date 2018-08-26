@@ -1,5 +1,52 @@
 
 <div class="container">
+
+  <h3 class="module-title">Painel de Controle</h3>
+
+  <md-grid-list
+        md-cols="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="6"
+        md-row-height-gt-md="1:1" md-row-height="4:3"
+        md-gutter="8px" md-gutter-gt-sm="4px" >
+
+    <md-grid-tile
+                  md-rowspan="2"
+                  md-colspan="2"
+                  md-colspan-sm="1"
+                  md-colspan-xs="1">
+                  <div class="widget">
+                  <div>  <h4 class="widget-title"> Visão geral </h4>  </div>
+                  <canvas id="doughnut" class="chart chart-doughnut"chart-data="circle_progress.data" chart-labels="circle_progress.labels"></canvas>
+              </div>
+
+
+    </md-grid-tile>
+    <md-grid-tile
+                  md-rowspan="2"
+                  md-colspan="2"
+                  md-colspan-sm="1"
+                  md-colspan-xs="1">
+                  <div class="widget">
+                    <div><h4 class="widget-title"> Por Dia da Semana </h4> </div>
+                    <canvas id="line" class="chart chart-line" chart-data="progresso_comparativo.data" chart-labels="progresso_comparativo.labels" chart-series="progresso_comparativo.series"  chart-click="onClick"> </canvas>
+              </div>
+
+    </md-grid-tile>
+
+    <md-grid-tile
+                  md-rowspan="2"
+                  md-colspan="2"
+                  md-colspan-sm="1"
+                  md-colspan-xs="1">
+                  <div class="widget">
+                    <div><h4 class="widget-title"> Por Membro </h4> </div>
+                      <canvas id="base" class="chart-horizontal-bar" chart-data="progresso_individual_comparativo.data" chart-labels="progresso_individual_comparativo.labels" ></canvas>              </div>
+
+    </md-grid-tile>
+  </md-grid-list>
+
+
+
+
   <div class="row">
     <div class="col-sm">
       <center>
