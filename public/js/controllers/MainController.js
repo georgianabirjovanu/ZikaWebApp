@@ -40,12 +40,18 @@ angular.module('zikaApp').controller('MainController', ['$scope','$location','$m
      return !!$rootScope.user_info;
    }
 
+   $scope.goTo = function(path) {
+     $location.path(path);
+     $scope.toggleLeft();
+   }
+
    $scope.gotoProperties = function(){
      $location.path('properties');
    }
 
    $scope.gotoDashboard = function(){
      $location.path('dashboard');
+
    }
 
 

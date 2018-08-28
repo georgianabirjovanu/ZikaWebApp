@@ -39,4 +39,33 @@ angular.module('zikaApp').controller('PropertyController', ['$scope', '$rootScop
   $scope.addProperty = function() {
 
   }
+
+  $scope.people = [
+    {
+      name: 'Joao',
+      img: 'https://d3ujk8tqtsey8o.cloudfront.net/imagens_face/small_shutterstock_140713168.jpg',
+      selected: false
+    },
+    {
+      name: 'Maria',
+      img: 'https://d3ujk8tqtsey8o.cloudfront.net/imagens_face/small_shutterstock_140713168.jpg',
+      selected: true
+    },
+    {
+      name: 'Klebia',
+      img: 'https://d3ujk8tqtsey8o.cloudfront.net/imagens_face/small_shutterstock_140713168.jpg',
+      selected: false
+    },
+    {
+      name: 'Veruska',
+      img: 'https://d3ujk8tqtsey8o.cloudfront.net/imagens_face/small_shutterstock_140713168.jpg',
+      selected: false
+    },
+    {
+      name: 'Josefa',
+      img: 'https://d3ujk8tqtsey8o.cloudfront.net/imagens_face/small_shutterstock_140713168.jpg',
+      selected: false
+    }
+  ]
+
 }]);

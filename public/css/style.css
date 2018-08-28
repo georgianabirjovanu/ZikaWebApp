@@ -1,5 +1,6 @@
 body {
   font-family: 'Lato', sans-serif;
+  height: 100%;
 }
 
 .md-toolbar-tools{
@@ -63,4 +64,31 @@ body {
 
 .component-title {
   padding-bottom: 30px;
+}
+
+.properties-overview {
+   padding-top: 30px;
+}
+
+.agent-wrapper {
+  display: flex;
+  margin-right: auto;
+}
+
+.floating-buttons {
+  position: fixed;
+  bottom: 2%;
+  right: 2%;
+}
+
+.avatar {
+  margin-left: 10px !important;
+  margin-right: 10px !important;
+  height: 40px;
+  border-radius: 24px;
+  padding: 0px !important;
+}
+
+.action-button {
+  margin: 10px !important;
 }

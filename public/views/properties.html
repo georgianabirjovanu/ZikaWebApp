@@ -1,18 +1,6 @@
 <div class="container">
-  <div layout="row" layout-align="center center">
-    <div flex="80">
-      <h1 class="properties-title">Propriedades</h1>
-    </div>
-    <div flex="20">
-      <md-button class="md-fab md-primary md-mini" ng-click="showAdvanced($event)">
-        <i class="button-fab-icon material-icons">add</i>
-      </md-button>
-      <md-button class="md-fab md-primary md-mini">
-        <i class="button-fab-icon material-icons">search</i>
-      </md-button>
-    </div>
-  </div>
-  <div layout="row">
+  <h3 class="module-title">Propriedades</h3>
+  <div class="properties-overview" layout="row">
     <div flex>
       <md-list flex>
         <md-list-item ng-click="null">
@@ -36,9 +24,9 @@
       <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
         <md-card-title>
           <md-card-title-text>
-            <span class="md-subhead">Endereço: </span>
-            <span class="md-subhead">Latitude: </span>
-            <span class="md-subhead">Longitude: </span>
+            <b> Rua Getulio Cavalcante, 1477 </b> <br/>
+            <span class="md-subhead"> Visita Mais Recente: 27/08/2018 </span> <br/>
+            <span class="md-subhead"> Visita Mais Antiga: 19/07/2002 </span>
           </md-card-title-text>
           <md-card-title-media>
             <div class="md-media-lg card-media">
@@ -47,15 +35,26 @@
           </md-card-title-media>
         </md-card-title>
         <md-card-actions layout="row" layout-align="end center">
-          <md-button class="md-fab md-primary md-mini" aria-label="Profile">
-            <i class="button-fab-icon material-icons">person</i>
+          <div class="agent-wrapper">
+            <img ng-repeat="person in people" alt="{{ person.name }}" ng-src="{{ person.img }}" class="md-avatar avatar" />
+          </div>
+          <md-button class="md-fab md-primary md-mini action-button" aria-label="Adicionar Agente">
+            <i class="button-fab-icon material-icons">person_add</i>
           </md-button>
-          <md-button class="md-fab md-primary md-mini" aria-label="Profile">
-            <i class="button-fab-icon material-icons">person</i>
+          <md-button class="md-fab md-primary md-mini action-button" aria-label="Editar">
+            <i class="button-fab-icon material-icons">edit</i>
           </md-button>
-          <md-button>Editar</md-button>
         </md-card-actions>
       </md-card>
     </div>
   </div>
+
+</div>
+<div class="floating-buttons">
+  <md-button class="md-fab md-primary md-mini">
+    <i class="button-fab-icon material-icons">search</i>
+  </md-button>
+  <md-button class="md-fab md-primary md-mini" ng-click="showAdvanced($event)">
+    <i class="button-fab-icon material-icons">add</i>
+  </md-button>
 </div>

@@ -6,6 +6,7 @@
     <base href="/">
 
     <title>Zika Manager App</title>
+    <link rel="shortcut icon" href="img/zikaIcon.png">
 
     <!-- CSS -->
     <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
@@ -80,12 +81,12 @@
 
          <md-list flex>
         <md-subheader class="md-no-sticky">Você está acessando o sistema como: <b>Maria Couto</b></md-subheader>
-          <md-list-item class="md-1-line" ng-click="gotoDashboard()" ng-click="null">
+          <md-list-item class="md-1-line" ng-click="goTo('dashboard')" ng-click="null">
             <div class="md-list-item-text" layout="column">
               <h5>Dashboard</h5>
             </div>
           </md-list-item>
-          <md-list-item class="md-1-line" ng-click="gotoProperties()" ng-click="null">
+          <md-list-item class="md-1-line" ng-click="goTo('properties')" ng-click="null">
             <div class="md-list-item-text" layout="column">
               <h5>Propriedades</h5>
             </div>
