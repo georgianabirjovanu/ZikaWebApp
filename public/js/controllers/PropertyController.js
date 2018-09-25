@@ -1,4 +1,4 @@
-angular.module('zikaApp').controller('PropertyController', ['$scope', '$rootScope', '$location', 'ActivityService', '$mdDialog', '$mdPanel', '$q', '$timeout', 'UserService', function($scope, $rootScope, $location, ActivityService, $mdDialog, $mdPanel, $q, $timeout, UserService) {
+angular.module('zikaApp').controller('PropertyController', ['$scope', '$rootScope', '$location', 'ActivityService', '$mdDialog', '$mdPanel', '$q', '$timeout', 'UserService', '$rootScope',function($scope, $rootScope, $location, ActivityService, $mdDialog, $mdPanel, $q, $timeout, UserService, $rootScope) {
     $scope.property = {}
 
     ActivityService.getActivities($rootScope.user_info.token).then(
@@ -7,15 +7,19 @@ angular.module('zikaApp').controller('PropertyController', ['$scope', '$rootScop
       })
 
     $scope.selectProperty = function(property){
-       $scope.current_property = property
-       console.log(property)
+       $rootScope.current_property = property
      }
 
     $scope.assignUser = function(){
-      console.log($scope.selectedItem)
-      console.log($scope.current_property)
-      ActivityService.assignUser($scope.selectedItem.value,$scope.current_property.address).then((result) => console.log(result))
+      ActivityService.assignUser($scope.selectedItem.value,$rootScope.current_property.address,$rootScope.user_info.token).then((result) => console.log(result))
+    }
 
+    $scope.getAgent = function(id){
+      var agents = $scope.agents.filter((agent)=> agent._id.toString() == id.toString())
+      if (agents.length > 0)
+        return agents[0]
+      else
+        return {}
     }
 
     $scope.showAdvanced = function(ev) {
@@ -38,6 +42,27 @@ angular.module('zikaApp').controller('PropertyController', ['$scope', '$rootScop
       $scope.status = 'You cancelled the dialog.';
     });
   };
+
+  $scope.showEdit = function(ev) {
+  $mdDialog.show({
+    controller: DialogController,
+    templateUrl: 'views/edit-property.html',
+    parent: angular.element(document.body),
+    targetEvent: ev,
+    clickOutsideToClose:true,
+    fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+  })
+  .then(function(answer) {
+    let activity = {
+      address: answer[0],
+      latitude: answer[1],
+      longitude: answer[2]
+    }
+    ActivityService.addActivity(activity, $rootScope.user_info.token);
+  }, function() {
+    $scope.status = 'You cancelled the dialog.';
+  });
+};
 
   $scope.showAddAgent = function(ev) {
     $mdDialog.show({
@@ -152,6 +177,10 @@ angular.module('zikaApp').controller('PropertyController', ['$scope', '$rootScop
      };
 
    }
+
+   $scope.formatDate = function (date) {
+      return moment(date).format('DD/MM/YYYY')
+    };
 
 
 }]);

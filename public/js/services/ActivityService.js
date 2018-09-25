@@ -35,12 +35,12 @@ zika.service('ActivityService', ['$q', '$http', function ($q, $http) {
         return deferred.promise;
     }
 
-    function assignUser(email, address) {
+    function assignUser(email, address, token) {
       var body = {
         email: email,
         address: address
       }
-      
+
       var req = {
         method: 'POST',
         url: API_URL + '/assignActivity',

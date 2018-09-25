@@ -11,27 +11,28 @@
       </md-list>
     </div>
     <div flex>
-      <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+      <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" ng-show="current_property" md-theme-watch>
         <md-card-title>
           <md-card-title-text>
-            <b> Rua Getulio Cavalcante, 1477 </b> <br/>
-            <span class="md-subhead"> Visita Mais Recente: 27/08/2018 </span> <br/>
-            <span class="md-subhead"> Visita Mais Antiga: 19/07/2002 </span>
+            <b> {{current_property.address}} </b> <br/>
+            <b ng-show="current_property.visits[0]"> Visitas recentes: </b> <br/>
+            <b ng-hide="current_property.visits[0]"> Sem visitas recentes </b> <br/>
+            <span class="md-subhead" ng-repeat="visit in current_property.visits"> {{formatDate(visit.visitDate)}} </span> <br/>
           </md-card-title-text>
           <md-card-title-media>
             <div class="md-media-lg card-media">
-              <img ng-src="img/casa.jpg" class="md-card-image" alt="Washed Out">
+              <img ng-src="{{current_property.photo}}" class="md-card-image" alt="Washed Out">
             </div>
           </md-card-title-media>
         </md-card-title>
         <md-card-actions layout="row" layout-align="end center">
-          <div class="agent-wrapper">
-            <img ng-repeat="person in people" alt="{{ person.name }}" ng-src="{{ person.img }}" class="md-avatar avatar" />
+          <div ng-repeat="agent in current_property.assignedUsers | limitTo:3" class="agent-wrapper">
+            {{getAgent(agent).fullName}}
           </div>
           <md-button class="md-fab md-primary md-mini action-button" aria-label="Adicionar Agente" ng-click="showAddAgent($event)">
             <i class="button-fab-icon material-icons">person_add</i>
           </md-button>
-          <md-button class="md-fab md-primary md-mini action-button" aria-label="Editar">
+          <md-button class="md-fab md-primary md-mini action-button" aria-label="Editar" ng-click="showEdit($event)">
             <i class="button-fab-icon material-icons">edit</i>
           </md-button>
         </md-card-actions>
