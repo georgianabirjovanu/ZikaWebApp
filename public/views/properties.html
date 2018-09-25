@@ -3,19 +3,9 @@
   <div class="properties-overview" layout="row">
     <div flex>
       <md-list flex>
-        <md-list-item ng-click="null">
+        <md-list-item ng-click="selectProperty(property)" ng-repeat="property in proprieties">
           <div class="md-list-item-text" layout="column">
-            <h5>Endereço 1</h5>
-          </div>
-        </md-list-item>
-        <md-list-item ng-click="null">
-          <div class="md-list-item-text" layout="column">
-            <h5>Endereço 2</h5>
-          </div>
-        </md-list-item>
-        <md-list-item ng-click="null">
-          <div class="md-list-item-text" layout="column">
-            <h5>Endereço 3</h5>
+            <h5>{{property.address}}</h5>
           </div>
         </md-list-item>
       </md-list>

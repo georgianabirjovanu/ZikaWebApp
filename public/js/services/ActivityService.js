@@ -35,23 +35,33 @@ zika.service('ActivityService', ['$q', '$http', function ($q, $http) {
         return deferred.promise;
     }
 
-    function assignUser(activityID) {
-        // create a new instance of deferred
-        var deferred = $q.defer();
+    function assignUser(email, address) {
+      var body = {
+        email: email,
+        address: address
+      }
+      
+      var req = {
+        method: 'POST',
+        url: API_URL + '/assignActivity',
+        headers: { 'Authorization': "Bearer " + token , 'Content-Type': 'application/json'},
+        data: body
+      }
+      var deferred = $q.defer();
 
-        $http.post(API_URL + '/assignActivity', user)
-            .then(function (data) {
-                if (data.status === 200) {
-                    deferred.resolve(data);
-                } else {
-                    deferred.reject();
-                }
-            })
-            .catch(function (error) {
-                deferred.reject(error.data);
-            });
+      $http(req)
+          .then(function (data) {
+              if (data.status === 200) {
+                  deferred.resolve(data);
+              } else {
+                  deferred.reject();
+              }
+          })
+          .catch(function (error) {
+              deferred.reject(error.data);
+          });
 
-        return deferred.promise;
+      return deferred.promise;
     }
 
     function getActivitiesForUser(token) {
@@ -89,7 +99,7 @@ zika.service('ActivityService', ['$q', '$http', function ($q, $http) {
         $http(req)
             .then(function (data) {
                 if (data.status === 200) {
-                    deferred.resolve();
+                    deferred.resolve(data.data);
                     user = {status: false};
                 } else {
                     deferred.reject();

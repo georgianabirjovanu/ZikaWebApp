@@ -13,14 +13,14 @@ zika.service('UserService', ['$q', '$http', function ($q, $http) {
         // create a new instance of deferred
         var deferred = $q.defer();
         var req = {
-          method: 'POST',
+          method: 'GET',
           url: API_URL + '/user',
           headers: { 'Authorization': "Bearer " + token , 'Content-Type': 'application/json'}
         }
         $http(req)
             .then(function (data) {
                 if (data.status === 200) {
-                    deferred.resolve();
+                    deferred.resolve(data.data);
                     user = {status: false};
                 } else {
                     deferred.reject();

@@ -1,7 +1,22 @@
-angular.module('zikaApp').controller('PropertyController', ['$scope', '$rootScope', '$location', 'ActivityService', '$mdDialog', '$mdPanel', '$q', '$timeout', function($scope, $rootScope, $location, ActivityService, $mdDialog, $mdPanel, $q, $timeout) {
+angular.module('zikaApp').controller('PropertyController', ['$scope', '$rootScope', '$location', 'ActivityService', '$mdDialog', '$mdPanel', '$q', '$timeout', 'UserService', function($scope, $rootScope, $location, ActivityService, $mdDialog, $mdPanel, $q, $timeout, UserService) {
     $scope.property = {}
 
-    ActivityService.getActivities($rootScope.user_info.token).then((result)=> console.log(result))
+    ActivityService.getActivities($rootScope.user_info.token).then(
+      function(result){
+        $scope.proprieties = result
+      })
+
+    $scope.selectProperty = function(property){
+       $scope.current_property = property
+       console.log(property)
+     }
+
+    $scope.assignUser = function(){
+      console.log($scope.selectedItem)
+      console.log($scope.current_property)
+      ActivityService.assignUser($scope.selectedItem.value,$scope.current_property.address).then((result) => console.log(result))
+
+    }
 
     $scope.showAdvanced = function(ev) {
     $mdDialog.show({
@@ -92,7 +107,8 @@ angular.module('zikaApp').controller('PropertyController', ['$scope', '$rootScop
   ]
 
   // list of `state` value/display objects
-   $scope.states        = loadAll();
+   $scope.allAgents        = []
+   loadAll()
    $scope.selectedItem  = null;
    $scope.searchText    = "";
 
@@ -105,7 +121,7 @@ angular.module('zikaApp').controller('PropertyController', ['$scope', '$rootScop
     * remote dataservice call.
     */
    this.querySearch = function(query) {
-     var results = query ? $scope.states.filter( createFilterFor(query) ) : $scope.states;
+     var results = query ? $scope.allAgents.filter( createFilterFor(query) ) : $scope.allAgents;
       var deferred = $q.defer();
       $timeout(function () { deferred.resolve( results );}, Math.random() * 1000, false);
       return deferred.promise;
@@ -115,20 +131,15 @@ angular.module('zikaApp').controller('PropertyController', ['$scope', '$rootScop
     * Build `states` list of key/value pairs
     */
    function loadAll() {
-     var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
-             Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
-             Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
-             Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
-             North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
-             South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
-             Wisconsin, Wyoming';
-
-     return allStates.split(/, +/g).map( function (state) {
-       return {
-         value: state.toLowerCase(),
-         display: state
-       };
-     });
+     UserService.getUsers($rootScope.user_info.token).then(function(result){
+       $scope.agents = result
+       $scope.allAgents =  $scope.agents.map(function(agent){
+         return {
+           value: agent.email,
+           display: agent.fullName
+         }
+       })
+     })
    }
 
    /**
@@ -136,9 +147,8 @@ angular.module('zikaApp').controller('PropertyController', ['$scope', '$rootScop
     */
    function createFilterFor(query) {
      var lowercaseQuery = query.toLowerCase();
-
      return function filterFn(state) {
-       return (state.value.indexOf(lowercaseQuery) === 0);
+       return (state.display.toLowerCase().indexOf(lowercaseQuery) === 0);
      };
 
    }
