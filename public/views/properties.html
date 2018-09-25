@@ -38,7 +38,7 @@
           <div class="agent-wrapper">
             <img ng-repeat="person in people" alt="{{ person.name }}" ng-src="{{ person.img }}" class="md-avatar avatar" />
           </div>
-          <md-button class="md-fab md-primary md-mini action-button" aria-label="Adicionar Agente">
+          <md-button class="md-fab md-primary md-mini action-button" aria-label="Adicionar Agente" ng-click="showAddAgent($event)">
             <i class="button-fab-icon material-icons">person_add</i>
           </md-button>
           <md-button class="md-fab md-primary md-mini action-button" aria-label="Editar">

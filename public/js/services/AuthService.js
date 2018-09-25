@@ -18,7 +18,7 @@ zika.service('AuthService', ['$q', '$http', function ($q, $http) {
     function sign_up(user) {
         var deferred = $q.defer();
         if (user.password === user.conf_pass) {
-            $http.post('https://zikaapp.herokuapp.com/auth/register', user)
+            $http.post(API_URL + '/auth/register', user)
                 .then(function (data) {
                     if (data.status === 200) {
                         deferred.resolve(data);
@@ -40,7 +40,7 @@ zika.service('AuthService', ['$q', '$http', function ($q, $http) {
         // create a new instance of deferred
         var deferred = $q.defer();
 
-        $http.post('https://zikaapp.herokuapp.com/auth/sign_in', user)
+        $http.post(API_URL + '/auth/sign_in', user)
             .then(function (data) {
                 if (data.status === 200) {
                     deferred.resolve(data);

@@ -16,7 +16,7 @@ zika.service('ActivityService', ['$q', '$http', function ($q, $http) {
         var deferred = $q.defer();
         var req = {
           method: 'POST',
-          url: 'https://zikaapp.herokuapp.com/addActivity',
+          url: API_URL + '/addActivity',
           headers: { 'Authorization': "Bearer " + token , 'Content-Type': 'application/json'},
           data: activity
         }
@@ -39,7 +39,7 @@ zika.service('ActivityService', ['$q', '$http', function ($q, $http) {
         // create a new instance of deferred
         var deferred = $q.defer();
 
-        $http.post('https://zikaapp.herokuapp.com/assignActivity', user)
+        $http.post(API_URL + '/assignActivity', user)
             .then(function (data) {
                 if (data.status === 200) {
                     deferred.resolve(data);
@@ -54,11 +54,39 @@ zika.service('ActivityService', ['$q', '$http', function ($q, $http) {
         return deferred.promise;
     }
 
-    function getActivities() {
+    function getActivitiesForUser(token) {
         // create a new instance of deferred
         var deferred = $q.defer();
+        var req = {
+          method: 'POST',
+          url: API_URL + '/getActivities',
+          headers: { 'Authorization': "Bearer " + token , 'Content-Type': 'application/json'}
+        }
+        $http(req)
+            .then(function (data) {
+                if (data.status === 200) {
+                    deferred.resolve();
+                    user = {status: false};
+                } else {
+                    deferred.reject();
+                }
+            })
+            .catch(function (error) {
+                deferred.reject(error.data);
+            });
 
-        $http.get('https://zikaapp.herokuapp.com/getActivities')
+        return deferred.promise;
+    }
+
+    function getActivities(token) {
+        // create a new instance of deferred
+        var deferred = $q.defer();
+        var req = {
+          method: 'GET',
+          url: API_URL + '/activity',
+          headers: { 'Authorization': "Bearer " + token , 'Content-Type': 'application/json'}
+        }
+        $http(req)
             .then(function (data) {
                 if (data.status === 200) {
                     deferred.resolve();

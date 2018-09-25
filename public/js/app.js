@@ -3,3 +3,5 @@ angular.module('zikaApp', ['ngRoute', 'appRoutes', 'ngMaterial', 'ngMessages', '
     .primaryPalette('blue-grey')
     .accentPalette('blue');
 });
+
+window.API_URL = 'https://zikaapp.herokuapp.com'
