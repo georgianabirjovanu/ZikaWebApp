@@ -5,4 +5,4 @@ angular.module('zikaApp', ['ngRoute', 'appRoutes', 'ngMaterial', 'ngMessages', '
 });
 
 // window.API_URL = 'https://zikaapi.herokuapp.com'
-window.API_URL = 'http://zikamanager.herokuapp.com'
+window.API_URL = 'https://zikamanager.herokuapp.com'
